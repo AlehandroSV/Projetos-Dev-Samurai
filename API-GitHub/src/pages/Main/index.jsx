@@ -11,6 +11,14 @@ import { Container, Logo, Title, Form, Input, Button } from "./styles";
 const Main = () => {
   const [login, setLogin] = useState("");
 
+  const ENTER_KEY = 13;
+
+  const handleSubmit = (e) => {
+    if (e.which === ENTER_KEY) {
+      location.href = `/${login}/repositories`;
+    }
+  };
+
   return (
     <Container>
       <Logo src={gitHubLogo} alt="API GitHub" />
@@ -21,6 +29,7 @@ const Main = () => {
           placeholder="Usuário"
           value={login}
           onChange={(e) => setLogin(e.target.value)}
+          onKeyDown={handleSubmit}
         />
         <Button to={`/${login}/repositories`}>
           <MdSearch size={42} />

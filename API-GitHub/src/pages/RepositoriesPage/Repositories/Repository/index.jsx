@@ -1,20 +1,21 @@
 import React from "react";
 
-import { Container, Footer, Name, Description, Link, Lang } from "./styles";
+import { Container, Name, Description, Footer, Lang, Link } from "./styles";
 
-const Repository = () => {
+import { langColors } from "../../../../services/config";
+
+const Repository = ({ repository }) => {
+  const color =
+    langColors[repository.language && repository.language.toLowerCase()];
+
   return (
-    <Container color="">
-      <Name>repo</Name>
-      <Description>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil incidunt
-        vero neque harum! Ea totam rem non delectus placeat similique nesciunt
-        illo nostrum, nam alias ex vero, earum tempore amet.
-      </Description>
-      <Footer color="">
-        <Lang>Repo</Lang>
-        <Link href="" target="_blank">
-          VER
+    <Container color={color}>
+      <Name>{repository.name}</Name>
+      <Description>{repository.description}</Description>
+      <Footer color={color}>
+        <Lang>{repository.language}</Lang>
+        <Link href={repository.html_url} target="_blank">
+          Ver
         </Link>
       </Footer>
     </Container>

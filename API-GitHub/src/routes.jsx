@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import RepositoriesPage from "./pages/RepositoriesPage";
 
-export const MainRoutes = (login) => {
+export const MainRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path={`/repositories`} element={<RepositoriesPage />} />
+        <Route path="/:login/repositories" element={<RepositoriesPage />} />
         <Route path="/" element={<Main />} />
       </Routes>
     </Router>

@@ -42,6 +42,16 @@ export const Name = styled.h2`
   }
 `;
 
+export const Bio = styled.p`
+  font-size: ${(props) => props.theme.fontSizes.normal};
+  text-align: center;
+  font-weight: normal;
+
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
 export const Inner = styled.div`
   padding: 1rem;
 
@@ -58,4 +68,9 @@ export const Data = styled.p`
   svg {
     margin-right: 10px;
   }
+`;
+
+export const Link = styled.a`
+  color: inherit;
+  text-decoration: none;
 `;

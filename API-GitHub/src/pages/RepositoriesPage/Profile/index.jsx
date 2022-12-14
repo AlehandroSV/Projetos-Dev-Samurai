@@ -1,26 +1,40 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 // Import Icons
 import { MdGroup, MdLocationCity, MdWork, MdLink } from "react-icons/md";
+import { FaTwitter } from "react-icons/fa";
 
 // Import Styled
-import { Container, Name, Login, Header, Avatar, Inner, Data } from "./styles";
+import {
+  Container,
+  Name,
+  Login,
+  Header,
+  Avatar,
+  Inner,
+  Data,
+  Bio,
+  Link,
+} from "./styles";
 
 const Profile = ({ user }) => {
   return (
     <Container>
       <Header>
         <Avatar src={user.avatar_url} />
+        <Bio>{user.bio}</Bio>
         <Login>{user.login}</Login>
         <Name>{user.name}</Name>
       </Header>
 
       <Inner>
         <Data>
-          <MdGroup size={20} /> {user.following}&nbsp;<i>Seguidores&nbsp;</i>
-          &nbsp;&middot;&nbsp;{user.followers}&nbsp;
-          <i>Seguindo</i>
+          <MdGroup size={20} />
+          {user.followers} Seguidores
+        </Data>
+        <Data>
+          <MdGroup size={20} />
+          {user.following} Seguindo
         </Data>
 
         {user.company && (
@@ -32,8 +46,19 @@ const Profile = ({ user }) => {
 
         {user.location && (
           <Data>
-            <MdLocationCity />
+            <MdLocationCity size={20} />
             {user.location}
+          </Data>
+        )}
+        {user.twitter_username && (
+          <Data>
+            <FaTwitter size={20} />
+            <Link
+              target="_blank"
+              href={`https://twitter.com/${user.twitter_username}`}
+            >
+              {user.twitter_username}
+            </Link>
           </Data>
         )}
 
@@ -48,19 +73,6 @@ const Profile = ({ user }) => {
       </Inner>
     </Container>
   );
-};
-
-Profile.propTypes = {
-  user: PropTypes.shape({
-    login: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    avatar_url: PropTypes.string.isRequired,
-    followers: PropTypes.number.isRequired,
-    following: PropTypes.number.isRequired,
-    company: PropTypes.string,
-    blog: PropTypes.string,
-    location: PropTypes.string,
-  }).isRequired,
 };
 
 export default Profile;
