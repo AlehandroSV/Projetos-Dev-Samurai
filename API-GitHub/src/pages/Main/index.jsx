@@ -15,7 +15,7 @@ const Main = () => {
 
   const handleSubmit = (e) => {
     if (e.which === ENTER_KEY) {
-      location.href = `/${login}/repositories`;
+      document.getElementById("button").click();
     }
   };
 
@@ -31,7 +31,7 @@ const Main = () => {
           onChange={(e) => setLogin(e.target.value)}
           onKeyDown={handleSubmit}
         />
-        <Button to={`/${login}/repositories`}>
+        <Button to={`/${login}/repositories`} id="button">
           <MdSearch size={42} />
         </Button>
       </Form>
