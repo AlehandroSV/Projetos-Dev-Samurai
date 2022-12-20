@@ -20,7 +20,7 @@ export const Container = styled.main`
     @media (max-width: 720px) {
       display: flex;
       flex-direction: column;
-      padding: 8rem;
+      padding: 3rem;
     }
   }
 `;
